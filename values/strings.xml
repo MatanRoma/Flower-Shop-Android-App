@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Flower Shop</string>
+    <string name="popUp_header">Order Preview</string>
+    <string name="welcome">Welcome!</string>
+
+    <string name="delivery_options">Delivery Options…</string>
+    <string name="pick_up_from_store">Pick Up From Store - Free</string>
+    <string name="standard_delivery">Standard Delivery - ₪14.90</string>
+    <string name="accurate_delivery">Time Accurate Delivery - ₪24.90</string>
+
+    <string name="address_edit_txt_hint">City, Street, House number…</string>
+
+    <string name="confirm_order">Confirm Your Order</string>
+    <string name="dlg_delivery_type">Delivery Type:</string>
+    <string name="get_delivery_type">" - "</string>
+    <string name="dlg_date">Date:</string>
+    <string name="get_date">" - "</string>
+    <string name="dlg_price">Price:</string>
+    <string name="get_price">" - "</string>
+    <string name="dlg_bouquet">Bouquet:</string>
+    <string name="dlg_get_bouquets_sum">Sum Of Bouquets</string>
+    <string name="dlg_btn_cancel">Cancel</string>
+    <string name="dlg_btn_ok">OK</string>
+    <string name="select_delivery_day">Select Day for Delivery / Pick-Up:</string>
+    <string name="select_delivery_time">Select Time for Delivery:</string>
+    <string name="confirmed_toast">Order Confirmed Successfully</string>
+    <string name="select_num_of_bouquets">How Many Bouquets Would You Like?</string>
+    <string name="insert_num_bouquets_radioBtn_et">Insert number of bouquets…</string>
+    <string name="radio_btn_done">Continue</string>
+    <string name="gaya_btn_txt">Gaya\n149.90₪</string>
+    <string name="anat_btn_txt">Anat\n139.90₪</string>
+    <string name="hila_btn_txt">Hila\n129.90₪</string>
+    <string name="sivan_btn_txt">Sivan\n119.90₪</string>
+    <string name="tamar_btn_txt">Tamar\n109.90₪</string>
+    <string name="check_box_tv_1">Extras</string>
+    <string name="check_box_tv_2">Separately for each Bouquet</string>
+    <string name="check_box_chocolate">Chocolate ₪19.90</string>
+    <string name="check_box_bear">Teddy Bear ₪29.90</string>
+    <string name="check_box_wine">Wine ₪99.90</string>
+    <string name="dlg_time">Time:</string>
+    <string name="get_time">" - "</string>
+    <string name="dlg_address">Address:</string>
+    <string name="get_address">" - "</string>
+    <string name="bouquet_number">Select bouquet </string>
+    <string name="payment_select">Select Payment Method</string>
+    <string name="payment_rb_cash">Cash</string>
+    <string name="payment_rb_credit">Credit Card</string>
+    <string name="payment_message_tv">Your payment will be collected by the delivery guy</string>
+    <string name="goodbye_tv_1">Thank you for your purchase at our Flower Shop!</string>
+    <string name="goodbye_tv_2">Click here to make another purchase!</string>
+    <string name="goodbye_btn">Here!</string>
+    <string name="goodbye">GoodBye!</string>
+</resources>

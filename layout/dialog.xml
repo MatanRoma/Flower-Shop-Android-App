@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/popup_background">
+
+    <!--Header-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header"
+        android:gravity="center"
+        android:text="@string/popUp_header"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        android:alpha="0.85"/>
+    <!--Header-->
+
+    <!--Delivery Type-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dlg_delivery_type"
+            style="@style/DialogTxtStyle"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/dlg_tv_delivery_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get_delivery_type"
+            style="@style/DialogTxtStyle"/>
+    </LinearLayout>
+    <!--Delivery Type-->
+
+    <!--Delivery Date-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dlg_date"
+            style="@style/DialogTxtStyle"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/dlg_tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_date"
+            style="@style/DialogTxtStyle"/>
+    </LinearLayout>
+    <!--Delivery Date-->
+
+    <!--Delivery Time-->
+    <LinearLayout
+        android:id="@+id/dlg_time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dlg_time"
+            style="@style/DialogTxtStyle"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/dlg_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_time"
+            style="@style/DialogTxtStyle"/>
+    </LinearLayout>
+    <!--Delivery Time-->
+
+    <!--Delivery Address-->
+    <LinearLayout
+        android:id="@+id/dlg_address_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dlg_address"
+            style="@style/DialogTxtStyle"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/dlg_tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_address"
+            style="@style/DialogTxtStyle"/>
+    </LinearLayout>
+    <!--Delivery Address-->
+
+    <!--Price-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dlg_price"
+            style="@style/DialogTxtStyle"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/dlg_tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_price"
+            style="@style/DialogTxtStyle"/>
+    </LinearLayout>
+    <!--Price-->
+
+    <!--Bouquet-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dlg_bouquet"
+            style="@style/DialogTxtStyle"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/dlg_bouquets_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dlg_get_bouquets_sum"
+            style="@style/DialogTxtStyle"/>
+    </LinearLayout>
+    <!--Bouquet-->
+
+</LinearLayout>

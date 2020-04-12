@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="gaya_btn_id" type="id"/>
+    <item name="anat_btn_id" type="id"/>
+    <item name="hila_btn_id" type="id"/>
+    <item name="sivan_btn_id" type="id"/>
+    <item name="tamar_btn_id" type="id"/>
+</resources>
