@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
                     paymentLayout.setVisibility(View.GONE);
                     confirm_btn.setVisibility(View.GONE);
 
-                    Toast.makeText(MainActivity.this, "You have to Insert a number in order to continue", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.confirmed_toast), Toast.LENGTH_SHORT).show();
                 }
                 /** <-------- Close the keyboard when pressing the  button --------> */
                 try  {
