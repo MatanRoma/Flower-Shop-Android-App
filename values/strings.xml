@@ -42,7 +42,7 @@
     <string name="dlg_address">Address:</string>
     <string name="get_address">" - "</string>
     <string name="bouquet_number">Select bouquet </string>
-    <string name="payment_select">Select Payment Method</string>
+    <string name="payment_select">Select a Payment Method:</string>
     <string name="payment_rb_cash">Cash</string>
     <string name="payment_rb_credit">Credit Card</string>
     <string name="payment_message_tv">Your payment will be collected by the delivery guy</string>
