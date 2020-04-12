@@ -40,7 +40,7 @@
     <string name="get_time">" - "</string>
     <string name="get_address">" - "</string>
     <string name="bouquet_number">"בחר את זר מספר "</string>
-    <string name="payment_select">בחר אמצעי תשלום</string>
+    <string name="payment_select">:בחר אמצעי תשלום</string>
     <string name="payment_rb_cash">מזומן</string>
     <string name="payment_rb_credit">כרטיס אשראי</string>
     <string name="payment_message_tv">תשלומך ייגבה ע\"י השליח</string>
