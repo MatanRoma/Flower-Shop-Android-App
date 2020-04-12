@@ -48,4 +48,5 @@
     <string name="goodbye_tv_2">לחץ כאן אם ברצונך לבצע רכישה נוספת!</string>
     <string name="goodbye_btn">כאן!</string>
     <string name="goodbye">להתראות!</string>
+    <string name="radio_btn_edit_txt_error">בכדי להמשיך עליך להזין מספר זרים</string>
 </resources>
