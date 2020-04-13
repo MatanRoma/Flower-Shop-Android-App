@@ -1,52 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="select_delivery_day">בחר יום לאיסוף / משלוח</string>
     <string name="app_name">Flower Shop</string>
-    <string name="popUp_header">אישור הזמנה</string>
     <string name="welcome">ברוכים הבאים!</string>
-    <string name="delivery_options">אפשרויות משלוח</string>
-    <string name="pick_up_from_store">איסוף עצמי - חינם</string>
-    <string name="standard_delivery">משלוח רגיל - ₪14.90</string>
-    <string name="accurate_delivery">משלוח על הדקה - ₪24.90</string>
-    <string name="address_edit_txt_hint">עיר, רחוב, מספר בית…</string>
-    <string name="confirm_order">אשר הזמנה</string>
-    <string name="dlg_delivery_type">סוג משלוח:</string>
-    <string name="dlg_price">מחיר:</string>
-    <string name="dlg_bouquet">מספר זרים:</string>
-    <string name="dlg_get_bouquets_sum">סכום זרים</string>
-    <string name="dlg_btn_cancel">ביטול</string>
-    <string name="dlg_btn_ok">אישור</string>
-    <string name="select_delivery_time">בחר שעה למשלוח:</string>
-    <string name="dlg_date">תאריך:</string>
-    <string name="confirmed_toast">הזמנתך אושרה בהצלחה</string>
+
+
     <string name="select_num_of_bouquets">כמה זרים תרצה?</string>
     <string name="insert_num_bouquets_radioBtn_et">הכנס מספר זרים…</string>
+    <string name="radio_btn_edit_txt_error">בכדי להמשיך עליך להזין מספר זרים</string>
+    <string name="bouquet_number">"בחר את זר מספר "</string>
     <string name="radio_btn_done">המשך</string>
     <string name="gaya_btn_txt">גאיה\n₪149.90</string>
     <string name="anat_btn_txt">ענת\n₪139.90</string>
     <string name="hila_btn_txt">הילה\n₪129.90</string>
     <string name="sivan_btn_txt">סיוון\n₪119.90</string>
     <string name="tamar_btn_txt">תמר\n₪109.90</string>
+
+
     <string name="check_box_tv_1">תוספות</string>
     <string name="check_box_tv_2">עבור כל זר בנפרד</string>
     <string name="check_box_chocolate">שוקולד ₪19.90</string>
     <string name="check_box_bear">דובי ₪29.90</string>
     <string name="check_box_wine">יין ₪99.90</string>
-    <string name="dlg_time">שעה:</string>
-    <string name="dlg_address">כתובת:</string>
-    <string name="get_delivery_type">" - "</string>
-    <string name="get_date">" - "</string>
-    <string name="get_price">" - "</string>
-    <string name="get_time">" - "</string>
-    <string name="get_address">" - "</string>
-    <string name="bouquet_number">"בחר את זר מספר "</string>
-    <string name="payment_select">:בחר אמצעי תשלום</string>
+
+
+    <string name="delivery_options">אפשרויות משלוח</string>
+    <string name="pick_up_from_store">איסוף עצמי - חינם</string>
+    <string name="standard_delivery">משלוח רגיל - ₪14.90</string>
+    <string name="accurate_delivery">משלוח על הדקה - ₪24.90</string>
+
+    <string name="address_edit_txt_hint">עיר, רחוב, מספר בית…</string>
+    <string name="address_error">הכנס כתובת כדי להמשיך!</string>
+
+    <string name="delivery_date_btn">לחץ בכדי לבחור יום למשלוח</string>
+    <string name="pickup_date_btn">לחץ בכדי לבחור יום לאיסוף</string>
+    <string name="select_delivery_day">בחר יום למשלוח:</string>
+    <string name="select_pickup_day">בחר יום לאיסוף:</string>
+    <string name="date_error">הכנס תאריך כדי להמשיך!</string>
+
+    <string name="delivery_time_btn">לחץ בכדי לבחור שעה למשלוח</string>
+    <string name="select_delivery_time">בחר שעה למשלוח:</string>
+    <string name="time_error">הכנס שעה כדי להמשיך!</string>
+
+
+    <string name="payment_select">בחר אמצעי תשלום:</string>
     <string name="payment_rb_cash">מזומן</string>
     <string name="payment_rb_credit">כרטיס אשראי</string>
-    <string name="payment_message_tv">תשלומך ייגבה ע\"י השליח</string>
+    <string name="payment_message_delivery_tv">תשלומך ייגבה ע\"י השליח</string>
+    <string name="payment_message_pickup_tv">תשלומך ייגבה בחנות</string>
+
+
+    <string name="confirm_order">אשר הזמנה</string>
+
+
+    <string name="popUp_header">אישור הזמנה</string>
+    <string name="dlg_delivery_type">סוג משלוח:</string>
+    <string name="get_delivery_type">" - "</string>
+    <string name="dlg_date">תאריך:</string>
+    <string name="get_date">" - "</string>
+    <string name="dlg_time">שעה:</string>
+    <string name="get_time">" - "</string>
+    <string name="dlg_address">כתובת:</string>
+    <string name="get_address">" - "</string>
+    <string name="dlg_bouquet">מספר זרים:</string>
+    <string name="dlg_get_bouquets_sum">סכום זרים</string>
+    <string name="dlg_price">מחיר:</string>
+    <string name="get_price">" - "</string>
+    <string name="dlg_btn_ok">אישור</string>
+    <string name="dlg_btn_cancel">ביטול</string>
+
+    <string name="confirmed_toast">הזמנתך אושרה בהצלחה</string>
+
+
     <string name="goodbye_tv_1">תודה על רכישתך בחנות הפרחים שלנו!</string>
     <string name="goodbye_tv_2">לחץ כאן אם ברצונך לבצע רכישה נוספת!</string>
     <string name="goodbye_btn">כאן!</string>
     <string name="goodbye">להתראות!</string>
-    <string name="radio_btn_edit_txt_error">בכדי להמשיך עליך להזין מספר זרים</string>
 </resources>
