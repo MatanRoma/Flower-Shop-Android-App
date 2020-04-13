@@ -34,7 +34,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    
+    <!--Dialog Header Text Style-->
+    <style name="DialogHeaderTextStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
 
+    
     <!--Dialog Text Style-->
     <style name="DialogTxtStyle">
         <item name="android:textColor">@color/colorPrimaryDark</item>
