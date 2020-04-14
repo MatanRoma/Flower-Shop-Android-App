@@ -279,6 +279,26 @@ public class MainActivity extends AppCompatActivity {
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
+                /** <-------- Checks if the user had insert an address, date or time --------> */
+                if (address_edit_txt.getText().toString().trim().length() == 0 && spinner.getSelectedItemPosition() != 1) {
+                    scrollView.scrollTo(0, (int) (spinnerLayout.getY()));
+                    Toast.makeText(MainActivity.this, R.string.address_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (day == null || month == null || year == null) {
+                    scrollView.scrollTo(0, (int) (spinnerLayout.getY()));
+                    Toast.makeText(MainActivity.this, R.string.date_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if ((hour == null || minute == null) && spinner.getSelectedItemPosition() == 3) {
+                    scrollView.scrollTo(0, (int) (spinnerLayout.getY()));
+                    Toast.makeText(MainActivity.this, R.string.time_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                /** <-------- Checks if the user had insert an address, date or time --------> */
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
