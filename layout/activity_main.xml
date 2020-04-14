@@ -295,6 +295,29 @@
                 style="@style/ButtonStyle"
                 android:background="@drawable/selector_btn_style"
                 android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/delivery_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/delivery_date_btn"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/delivery_date_ic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toStartOf="@id/delivery_date_tv"
+                android:layout_alignTop="@id/delivery_date_tv"
+                android:layout_marginEnd="25dp"
+                android:src="@drawable/ic_calendar"
+                android:visibility="gone"/>
             <!--Date Picker Button-->
 
 
@@ -303,13 +326,36 @@
                 android:id="@+id/delivery_time_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/delivery_date_btn"
+                android:layout_below="@+id/delivery_date_tv"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:padding="10dp"
                 android:text="@string/delivery_time_btn"
                 style="@style/ButtonStyle"
                 android:background="@drawable/selector_btn_style"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/delivery_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/delivery_time_btn"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/delivery_time_ic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toStartOf="@id/delivery_time_tv"
+                android:layout_alignTop="@id/delivery_time_tv"
+                android:layout_marginEnd="25dp"
+                android:src="@drawable/ic_clock"
                 android:visibility="gone"/>
             <!--Time Picker Button-->
 
@@ -319,7 +365,7 @@
                 android:id="@+id/payment_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/delivery_time_btn"
+                android:layout_below="@+id/delivery_time_tv"
                 android:visibility="gone">
 
                 <TextView
