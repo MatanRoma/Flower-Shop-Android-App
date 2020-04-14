@@ -82,8 +82,12 @@ public class MainActivity extends AppCompatActivity {
         final EditText address_edit_txt= findViewById(R.id.address_edit_txt);
 
         final Button date_btn = findViewById(R.id.delivery_date_btn);
+        final TextView date_txt = findViewById(R.id.delivery_date_tv);
+        final ImageView date_ic = findViewById(R.id.delivery_date_ic);
 
         final Button time_btn = findViewById(R.id.delivery_time_btn);
+        final TextView time_txt = findViewById(R.id.delivery_time_tv);
+        final ImageView time_ic = findViewById(R.id.delivery_time_ic);
 
         final TextView payment_tv = findViewById(R.id.payment_message_tv);
 
@@ -103,7 +107,11 @@ public class MainActivity extends AppCompatActivity {
                 if (deliveryType.equals(getResources().getString(R.string.delivery_options))) {
                     address_edit_txt.setVisibility(View.GONE);
                     date_btn.setVisibility(View.GONE);
+                    date_txt.setVisibility(View.GONE);
+                    date_ic.setVisibility(View.GONE);
                     time_btn.setVisibility(View.GONE);
+                    time_txt.setVisibility(View.GONE);
+                    time_ic.setVisibility(View.GONE);
                     paymentLayout.setVisibility(View.GONE);
 
                     confirm_btn.setEnabled(false);
@@ -111,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                     address_edit_txt.setVisibility(View.GONE);
                     date_btn.setVisibility(View.VISIBLE);
                     time_btn.setVisibility(View.GONE);
+                    time_txt.setVisibility(View.GONE);
+                    time_ic.setVisibility(View.GONE);
                     paymentLayout.setVisibility(View.VISIBLE);
 
                     date_btn.setText(R.string.pickup_date_btn);
@@ -121,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
                     address_edit_txt.setVisibility(View.VISIBLE);
                     date_btn.setVisibility(View.VISIBLE);
                     time_btn.setVisibility(View.GONE);
+                    time_txt.setVisibility(View.GONE);
+                    time_ic.setVisibility(View.GONE);
                     paymentLayout.setVisibility(View.VISIBLE);
 
                     date_btn.setText(R.string.delivery_date_btn);
@@ -131,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
                     address_edit_txt.setVisibility(View.VISIBLE);
                     date_btn.setVisibility(View.VISIBLE);
                     time_btn.setVisibility(View.VISIBLE);
+                    if (hour != null || minute != null) {
+                        time_txt.setVisibility(View.VISIBLE);
+                        time_ic.setVisibility(View.VISIBLE);
+                    }
                     paymentLayout.setVisibility(View.VISIBLE);
 
                     date_btn.setText(R.string.delivery_date_btn);
@@ -263,7 +279,11 @@ public class MainActivity extends AppCompatActivity {
                     spinnerLayout.setVisibility(View.GONE);
                     address_edit_txt.setVisibility(View.GONE);
                     date_btn.setVisibility(View.GONE);
+                    date_txt.setVisibility(View.GONE);
+                    date_ic.setVisibility(View.GONE);
                     time_btn.setVisibility(View.GONE);
+                    time_txt.setVisibility(View.GONE);
+                    time_ic.setVisibility(View.GONE);
                     paymentLayout.setVisibility(View.GONE);
                     confirm_btn.setVisibility(View.GONE);
 
@@ -310,10 +330,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         year = "" + datePicker.getYear();
-                        month = "" + datePicker.getMonth();
+                        month = "" + (datePicker.getMonth() + 1);
                         day = "" + datePicker.getDayOfMonth();
 
-                        Toast.makeText(MainActivity.this, day + "/" + month + "/" + year, Toast.LENGTH_SHORT).show();
+                        date_txt.setText(day + "/" + month + "/" + year);
+                        date_txt.setVisibility(View.VISIBLE);
+                        date_ic.setVisibility(View.VISIBLE);
+                        //Toast.makeText(MainActivity.this, day + "/" + month + "/" + year, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -378,7 +401,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                         /** <-------- Fills the zeros in the hour's and minute's strings --------> */
 
-                        Toast.makeText(MainActivity.this, hour + ":" + minute, Toast.LENGTH_SHORT).show();
+                        time_txt.setText(hour + ":" + minute);
+                        time_txt.setVisibility(View.VISIBLE);
+                        time_ic.setVisibility(View.VISIBLE);
+                        //Toast.makeText(MainActivity.this, hour + ":" + minute, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -507,7 +533,11 @@ public class MainActivity extends AppCompatActivity {
                         spinnerLayout.setVisibility(View.GONE);
                         address_edit_txt.setVisibility(View.GONE);
                         date_btn.setVisibility(View.GONE);
+                        date_txt.setVisibility(View.GONE);
+                        date_ic.setVisibility(View.GONE);
                         time_btn.setVisibility(View.GONE);
+                        time_txt.setVisibility(View.GONE);
+                        time_ic.setVisibility(View.GONE);
                         paymentLayout.setVisibility(View.GONE);
                         confirm_btn.setVisibility(View.GONE);
 
@@ -562,6 +592,9 @@ public class MainActivity extends AppCompatActivity {
                 cb_wine.setChecked(false);
                 spinner.setSelection(0);
                 address_edit_txt.setText("");
+                date_txt.setText("");
+                time_txt.setText("");
+                year = month = day = hour = minute = null;
 
                 goodbyeLayout.setVisibility(View.GONE);
             }
