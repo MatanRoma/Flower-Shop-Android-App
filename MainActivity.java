@@ -249,6 +249,15 @@ public class MainActivity extends AppCompatActivity {
 
                         radioBtnDynamicLayout.addView(radioTV);
                         radioBtnDynamicLayout.addView(hz);
+                        
+                        /** <-------- Animation for Scrolling down after pressing "Continue" button --------> */
+                        AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+                        alphaAnimation.setDuration(500);
+                        alphaAnimation.setRepeatCount(7);
+                        alphaAnimation.setRepeatMode(Animation.REVERSE);
+                        radio_arrow_1.startAnimation(alphaAnimation);
+                        radio_arrow_2.startAnimation(alphaAnimation);
+                        /** <-------- Animation for Scrolling down after pressing "Continue" button --------> */
                     }
                 } else {
                     checkBoxLayout.setVisibility(View.GONE);
