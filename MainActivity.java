@@ -2,48 +2,43 @@ package com.example.flowershop;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.Constraints;
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Layout;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
-import android.webkit.RenderProcessGoneDetail;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.sql.Time;
 import java.util.Objects;
-import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
-    private String deliveryType;
+    String deliveryType;
     LinearLayout radioBtnDynamicLayout;
     RadioGroup[] radioGroup;
     double totalPrice = 0;
+    String year, month, day, hour, minute;
 
     private boolean confirmed = false;
 
@@ -59,11 +54,13 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setBackgroundDrawableResource(R.drawable.background);
 
         /** <-------- Variables --------> */
+        final ScrollView scrollView = findViewById(R.id.main_scroll_view);
         final RelativeLayout radioBtnLayout = findViewById(R.id.radio_btn_layout);
         final RelativeLayout checkBoxLayout = findViewById(R.id.checkBox_Layout);
         final RelativeLayout spinnerLayout = findViewById(R.id.spinner_layout);
         final RelativeLayout paymentLayout = findViewById(R.id.payment_layout);
         final RelativeLayout goodbyeLayout = findViewById(R.id.goodbye_layout);
+
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner_1);
         final String[] delivery = {getResources().getString(R.string.delivery_options), getResources().getString(R.string.pick_up_from_store), getResources().getString(R.string.standard_delivery), getResources().getString(R.string.accurate_delivery)};
@@ -73,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText radioBtn_et = findViewById(R.id.radio_btn_et);
         final Button radioBtn_btn = findViewById(R.id.radio_btn_done);
+        final ImageView radio_arrow_1 = findViewById(R.id.radio_arrow_1);
+        final ImageView radio_arrow_2 = findViewById(R.id.radio_arrow_2);
 
         final CheckBox cb_chocolate = findViewById(R.id.checkBox_chocolate);
         final CheckBox cb_bear = findViewById(R.id.checkBox_bear);
@@ -82,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText address_edit_txt= findViewById(R.id.address_edit_txt);
 
-        final TextView delivery_date_tv = findViewById(R.id.delivery_date_tv);
-        final DatePicker delivery_date_picker = findViewById(R.id.delivery_date);
+        final Button date_btn = findViewById(R.id.delivery_date_btn);
 
-        final TextView delivery_time_tv = findViewById(R.id.delivery_time_tv);
-        final TimePicker delivery_time_picker = findViewById(R.id.delivery_time);
+        final Button time_btn = findViewById(R.id.delivery_time_btn);
+
+        final TextView payment_tv = findViewById(R.id.payment_message_tv);
 
         final Button again_btn = findViewById(R.id.goodbye_btn);
         final Button confirm_btn = findViewById(R.id.approve_btn);
@@ -249,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
 
                         radioBtnDynamicLayout.addView(radioTV);
                         radioBtnDynamicLayout.addView(hz);
-                        
+
                         /** <-------- Animation for Scrolling down after pressing "Continue" button --------> */
                         AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
                         alphaAnimation.setDuration(500);
@@ -262,15 +261,13 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     checkBoxLayout.setVisibility(View.GONE);
                     spinnerLayout.setVisibility(View.GONE);
-                    delivery_date_picker.setVisibility(View.GONE);
-                    address_edit_txt.setVisibility(View.GONE); /**??*/
-                    delivery_date_tv.setVisibility(View.GONE);
-                    delivery_time_picker.setVisibility(View.GONE);
-                    delivery_time_tv.setVisibility(View.GONE);
+                    address_edit_txt.setVisibility(View.GONE);
+                    date_btn.setVisibility(View.GONE);
+                    time_btn.setVisibility(View.GONE);
                     paymentLayout.setVisibility(View.GONE);
                     confirm_btn.setVisibility(View.GONE);
 
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.confirmed_toast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.radio_btn_edit_txt_error), Toast.LENGTH_SHORT).show();
                 }
                 /** <-------- Close the keyboard when pressing the  button --------> */
                 try  {
@@ -284,11 +281,141 @@ public class MainActivity extends AppCompatActivity {
         /** <-------- Dynamic Radio Button --------> */
 
 
+        /** <-------- Date Picker Dialog --------> */
+        date_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.date_dialog, null);
+
+                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+
+                builder.setView(view);
+
+                TextView delivery_date_tv = (TextView) view.findViewById(R.id.date_dlg_tv);
+
+                if (deliveryType.equals(getResources().getString(R.string.pick_up_from_store))) {
+                    delivery_date_tv.setText(R.string.select_pickup_day);
+                } else if (deliveryType.equals(getResources().getString(R.string.standard_delivery))) {
+                    delivery_date_tv.setText(R.string.select_delivery_day);
+                } else if (deliveryType.equals(getResources().getString(R.string.accurate_delivery))) {
+                    delivery_date_tv.setText(R.string.select_delivery_day);
+                }
+
+                final DatePicker datePicker = (DatePicker) view.findViewById(R.id.date_dlg_picker);
+                datePicker.setMinDate(System.currentTimeMillis() - 1000);
+
+                builder.setPositiveButton(getResources().getString(R.string.dlg_btn_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        year = "" + datePicker.getYear();
+                        month = "" + datePicker.getMonth();
+                        day = "" + datePicker.getDayOfMonth();
+
+                        Toast.makeText(MainActivity.this, day + "/" + month + "/" + year, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.setNegativeButton(getResources().getString(R.string.dlg_btn_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                final AlertDialog alertDialog = builder.create();
+                Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawableResource(R.color.colorAccent);
+
+                alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface dialog) {
+                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
+                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
+                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize((5 * density));
+
+                        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
+                        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setAllCaps(false);
+                        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextSize((5 * density));
+                    }
+                });
+
+                alertDialog.show();
+            }
+        });
+        /** <-------- Date Picker Dialog --------> */
+
+
+        /** <-------- Time Picker Dialog --------> */
+        time_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                final View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.time_dialog, null);
+
+                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+
+                builder.setView(view);
+
+                final TimePicker timePicker = (TimePicker) view.findViewById(R.id.time_dlg_picker);
+                timePicker.setIs24HourView(true);
+
+                builder.setPositiveButton(getResources().getString(R.string.dlg_btn_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        /** <-------- Fills the zeros in the hour's and minute's strings --------> */
+                        if (timePicker.getCurrentHour() < 10) {
+                            hour = "0" + timePicker.getCurrentHour();
+                        } else {
+                            hour = timePicker.getCurrentHour().toString();
+                        }
+
+                        if (timePicker.getCurrentMinute() < 10) {
+                            minute = "0" + timePicker.getCurrentMinute();
+                        } else {
+                            minute = timePicker.getCurrentMinute().toString();
+                        }
+                        /** <-------- Fills the zeros in the hour's and minute's strings --------> */
+
+                        Toast.makeText(MainActivity.this, hour + ":" + minute, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.setNegativeButton(getResources().getString(R.string.dlg_btn_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                final AlertDialog alertDialog = builder.create();
+                Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawableResource(R.color.colorAccent);
+
+                alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface dialog) {
+                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
+                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
+                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize((5 * density));
+
+                        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
+                        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setAllCaps(false);
+                        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextSize((5 * density));
+                    }
+                });
+
+                alertDialog.show();
+            }
+        });
+        /** <-------- Time Picker Dialog --------> */
+
+
         /** <-------- Confirmation Dialog --------> */
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 /** <-------- Checks if the user had insert an address, date or time --------> */
                 if (address_edit_txt.getText().toString().trim().length() == 0 && spinner.getSelectedItemPosition() != 1) {
                     scrollView.scrollTo(0, (int) (spinnerLayout.getY()));
@@ -346,24 +473,16 @@ public class MainActivity extends AppCompatActivity {
                     totalPrice += (99.90 * radioGroup.length);
 
 
-                if (spinner.getSelectedItemPosition() == 0 || spinner.getSelectedItemPosition() == 1) {
-                    /*timeLayout.setVisibility(View.GONE);*/
-                    /*addressLayout.setVisibility(View.GONE);*/
-                }
                 if (spinner.getSelectedItemPosition() == 2) {
                     totalPrice += 14.90;
 
-                    /*timeLayout.setVisibility(View.GONE);*/
-                    /*addressLayout.setVisibility(View.VISIBLE);*/
                     dlg_tv_address.setText(address_edit_txt.getText().toString());
                 }
                 if (spinner.getSelectedItemPosition() == 3) {
                     totalPrice += 24.90;
 
-                    /*timeLayout.setVisibility(View.VISIBLE);*/
-                    dlg_tv_time.setText(delivery_time_picker.getCurrentHour() + ":" + delivery_time_picker.getCurrentMinute());
+                    dlg_tv_time.setText(hour + ":" + minute);
 
-                    /*addressLayout.setVisibility(View.VISIBLE);*/
                     dlg_tv_address.setText(address_edit_txt.getText().toString());
                 }
 
@@ -374,7 +493,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView dlg_tv_bouquets = (TextView) view.findViewById(R.id.dlg_bouquets_sum);
 
                 dlg_tv_deliveryType.setText(delivery[spinner.getSelectedItemPosition()]);
-                dlg_tv_date.setText(delivery_date_picker.getDayOfMonth() + "/"+ delivery_date_picker.getMonth() +"/" + delivery_date_picker.getYear());
+                dlg_tv_date.setText(day + "/"+ month +"/" + year);
                 dlg_tv_price.setText(String.format("₪%.2f", totalPrice));
                 dlg_tv_bouquets.setText("" + radioGroup.length);
 
@@ -387,10 +506,8 @@ public class MainActivity extends AppCompatActivity {
                         checkBoxLayout.setVisibility(View.GONE);
                         spinnerLayout.setVisibility(View.GONE);
                         address_edit_txt.setVisibility(View.GONE);
-                        delivery_date_picker.setVisibility(View.GONE);
-                        delivery_date_tv.setVisibility(View.GONE);
-                        delivery_time_picker.setVisibility(View.GONE);
-                        delivery_time_tv.setVisibility(View.GONE);
+                        date_btn.setVisibility(View.GONE);
+                        time_btn.setVisibility(View.GONE);
                         paymentLayout.setVisibility(View.GONE);
                         confirm_btn.setVisibility(View.GONE);
 
@@ -451,57 +568,4 @@ public class MainActivity extends AppCompatActivity {
         });
         /** <-------- Restarting the Application --------> */
     }
-
-
-    /*public void createSelectDateDialog(final float density) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-        View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog, null);
-
-        *//*LayoutInflater inflater = MainActivity.this.getLayoutInflater();*//*
-
-        builder.setView(view);
-
-        TextView dlg_tv_deliveryType = (TextView) view.findViewById(R.id.dlg_tv_delivery_type);
-        TextView dlg_tv_date = (TextView) view.findViewById(R.id.dlg_tv_date);
-        TextView dlg_tv_price = (TextView) view.findViewById(R.id.dlg_tv_price);
-        TextView dlg_tv_bouquets = (TextView) view.findViewById(R.id.dlg_bouquets_sum);
-
-        dlg_tv_price.setText("0");
-        dlg_tv_bouquets.setText("0");
-
-        builder.setPositiveButton(getResources().getString(R.string.dlg_btn_ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                confirmed = true;
-                Toast.makeText(MainActivity.this, getResources().getString(R.string.confirmed_toast), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        builder.setNegativeButton(getResources().getString(R.string.dlg_btn_cancel), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                confirmed = false;
-                dialog.cancel();
-            }
-        });
-
-        final AlertDialog alertDialog = builder.create();
-        Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawableResource(R.color.colorAccent);
-
-        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
-                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
-                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize((5 * density));
-
-                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
-                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setAllCaps(false);
-                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextSize((5 * density));
-            }
-        });
-
-        alertDialog.show();
-    }*/
 }
