@@ -103,38 +103,42 @@ public class MainActivity extends AppCompatActivity {
 
                 if (deliveryType.equals(getResources().getString(R.string.delivery_options))) {
                     address_edit_txt.setVisibility(View.GONE);
-                    delivery_date_tv.setVisibility(View.GONE);
-                    delivery_date_picker.setVisibility(View.GONE);
-                    delivery_time_tv.setVisibility(View.GONE);
-                    delivery_time_picker.setVisibility(View.GONE);
+                    date_btn.setVisibility(View.GONE);
+                    time_btn.setVisibility(View.GONE);
                     paymentLayout.setVisibility(View.GONE);
+
                     confirm_btn.setEnabled(false);
                 } else if (deliveryType.equals(getResources().getString(R.string.pick_up_from_store))) {
                     address_edit_txt.setVisibility(View.GONE);
-                    delivery_date_tv.setVisibility(View.VISIBLE);
-                    delivery_date_picker.setVisibility(View.VISIBLE);
-                    delivery_time_tv.setVisibility(View.GONE);
-                    delivery_time_picker.setVisibility(View.GONE);
+                    date_btn.setVisibility(View.VISIBLE);
+                    time_btn.setVisibility(View.GONE);
                     paymentLayout.setVisibility(View.VISIBLE);
+
+                    date_btn.setText(R.string.pickup_date_btn);
+                    payment_tv.setText(R.string.payment_message_pickup_tv);
+
                     confirm_btn.setEnabled(true);
                 } else if (deliveryType.equals(getResources().getString(R.string.standard_delivery))) {
                     address_edit_txt.setVisibility(View.VISIBLE);
-                    delivery_date_tv.setVisibility(View.VISIBLE);
-                    delivery_date_picker.setVisibility(View.VISIBLE);
-                    delivery_time_tv.setVisibility(View.GONE);
-                    delivery_time_picker.setVisibility(View.GONE);
+                    date_btn.setVisibility(View.VISIBLE);
+                    time_btn.setVisibility(View.GONE);
                     paymentLayout.setVisibility(View.VISIBLE);
+
+                    date_btn.setText(R.string.delivery_date_btn);
+                    payment_tv.setText(R.string.payment_message_delivery_tv);
+
                     confirm_btn.setEnabled(true);
                 } else if (deliveryType.equals(getResources().getString(R.string.accurate_delivery))) {
                     address_edit_txt.setVisibility(View.VISIBLE);
-                    delivery_date_tv.setVisibility(View.VISIBLE);
-                    delivery_date_picker.setVisibility(View.VISIBLE);
-                    delivery_time_tv.setVisibility(View.VISIBLE);
-                    delivery_time_picker.setVisibility(View.VISIBLE);
+                    date_btn.setVisibility(View.VISIBLE);
+                    time_btn.setVisibility(View.VISIBLE);
                     paymentLayout.setVisibility(View.VISIBLE);
+
+                    date_btn.setText(R.string.delivery_date_btn);
+                    payment_tv.setText(R.string.payment_message_delivery_tv);
+
                     confirm_btn.setEnabled(true);
                 }
-                /*Toast.makeText(MainActivity.this, deliveryType, Toast.LENGTH_SHORT).show();*/
             }
 
             @Override
