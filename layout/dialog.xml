@@ -10,24 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/header"
-        android:gravity="center"
         android:text="@string/popUp_header"
-        android:textStyle="bold|italic"
-        android:textColor="@color/colorWhite"
-        android:textSize="30sp"
+        style="@style/DialogHeaderTextStyle"
         android:alpha="0.85"/>
     <!--Header-->
+
 
     <!--Delivery Type-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dlg_delivery_type"
             style="@style/DialogTxtStyle"
@@ -35,20 +32,21 @@
 
         <TextView
             android:id="@+id/dlg_tv_delivery_type"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/get_delivery_type"
             style="@style/DialogTxtStyle"/>
     </LinearLayout>
     <!--Delivery Type-->
 
+
     <!--Delivery Date-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_weight="1">
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,15 +64,15 @@
     </LinearLayout>
     <!--Delivery Date-->
 
+
     <!--Delivery Time-->
     <LinearLayout
         android:id="@+id/dlg_time_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_weight="1"
-        android:visibility="visible">
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,15 +90,15 @@
     </LinearLayout>
     <!--Delivery Time-->
 
+
     <!--Delivery Address-->
     <LinearLayout
         android:id="@+id/dlg_address_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_weight="1"
-        android:visibility="visible">
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -118,37 +116,14 @@
     </LinearLayout>
     <!--Delivery Address-->
 
-    <!--Price-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dlg_price"
-            style="@style/DialogTxtStyle"
-            android:layout_marginEnd="10dp"/>
-
-        <TextView
-            android:id="@+id/dlg_tv_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/get_price"
-            style="@style/DialogTxtStyle"/>
-    </LinearLayout>
-    <!--Price-->
 
     <!--Bouquet-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:layout_weight="1">
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -165,5 +140,30 @@
             style="@style/DialogTxtStyle"/>
     </LinearLayout>
     <!--Bouquet-->
+
+
+    <!--Price-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dlg_price"
+            style="@style/DialogTxtStyle"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/dlg_tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_price"
+            style="@style/DialogTxtStyle"/>
+    </LinearLayout>
+    <!--Price-->
 
 </LinearLayout>
