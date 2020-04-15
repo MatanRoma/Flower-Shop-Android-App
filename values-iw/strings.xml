@@ -52,7 +52,7 @@
     <string name="confirm_order">אשר הזמנה</string>
 
 
-    <string name="popUp_header">אישור הזמנה</string>
+    <string name="popUp_header">סיכום הזמנה</string>
     <string name="dlg_delivery_type">סוג משלוח:</string>
     <string name="get_delivery_type">" - "</string>
     <string name="dlg_date">תאריך:</string>
