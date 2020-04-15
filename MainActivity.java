@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -325,13 +326,19 @@ public class MainActivity extends AppCompatActivity {
 
                 final DatePicker datePicker = (DatePicker) view.findViewById(R.id.date_dlg_picker);
                 datePicker.setMinDate(System.currentTimeMillis() - 1000);
+                Date maxDate = new Date();
+                maxDate.setTime(System.currentTimeMillis() - 1000);
+                maxDate.setYear(maxDate.getYear() + 1);
+                datePicker.setMaxDate(maxDate.getTime());
 
                 builder.setPositiveButton(getResources().getString(R.string.dlg_btn_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         year = "" + datePicker.getYear();
-                        month = "" + (datePicker.getMonth() + 1);
-                        day = "" + datePicker.getDayOfMonth();
+                        month = datePicker.getMonth() >= 9 ?
+                                ("" + (datePicker.getMonth() + 1)) : ("0" + (datePicker.getMonth() + 1));
+                        day = datePicker.getDayOfMonth() >= 10 ?
+                                ("" + datePicker.getDayOfMonth()) : ("0" + datePicker.getDayOfMonth());
 
                         date_txt.setText(day + "/" + month + "/" + year);
                         date_txt.setVisibility(View.VISIBLE);
@@ -387,19 +394,11 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton(getResources().getString(R.string.dlg_btn_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        /** <-------- Fills the zeros in the hour's and minute's strings --------> */
-                        if (timePicker.getCurrentHour() < 10) {
-                            hour = "0" + timePicker.getCurrentHour();
-                        } else {
-                            hour = timePicker.getCurrentHour().toString();
-                        }
+                        hour = timePicker.getCurrentHour() >= 10 ?
+                                "" + timePicker.getCurrentHour() : "0" + timePicker.getCurrentHour();
 
-                        if (timePicker.getCurrentMinute() < 10) {
-                            minute = "0" + timePicker.getCurrentMinute();
-                        } else {
-                            minute = timePicker.getCurrentMinute().toString();
-                        }
-                        /** <-------- Fills the zeros in the hour's and minute's strings --------> */
+                        minute = timePicker.getCurrentMinute() >= 10 ?
+                                "" + timePicker.getCurrentMinute() : "0" + timePicker.getCurrentMinute();
 
                         time_txt.setText(hour + ":" + minute);
                         time_txt.setVisibility(View.VISIBLE);
