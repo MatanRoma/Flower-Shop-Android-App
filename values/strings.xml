@@ -51,7 +51,7 @@
     <string name="confirm_order">Confirm Your Order</string>
 
 
-    <string name="popUp_header">Order Preview</string>
+    <string name="popUp_header">Order Summary</string>
     <string name="dlg_delivery_type">Delivery Type:</string>
     <string name="get_delivery_type">" - "</string>
     <string name="dlg_date">Date:</string>
